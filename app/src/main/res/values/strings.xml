@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Playing With Monster</string>
+    <string name="nav_open">Open</string>
+    <string name="nav_close">Close</string>
+    <string name="player_move">Ход игрока</string>
+    <string name="monster_move">Ход монстра</string>
+    <string name="player_health_max">Максимальное здоровье игрока</string>
+    <string name="monster_health_max">Максимальное здоровье монстра</string>
+    <string name="player_health_current">Текущее здоровье игрока</string>
+    <string name="monster_health_current">Текущее здоровье монстра</string>
+    <string name="heal_player">Исцелить игрока</string>
+    <string name="count_first_aid_kits">Оставшееся количество аптечек</string>
+    <string name="start_game">Начать игру</string>
+    <string name="history">История</string>
+    <string name="results">Результаты</string>
+    <string name="game_with_monster">Игра с монстром</string>
+    <string name="player_attack">Атака игрока</string>
+    <string name="player_defense">Защита игрока</string>
+    <string name="player_damage">Урон игрока</string>
+    <string name="monster_attack">Атака монстра</string>
+    <string name="monster_defense">Защита монстра</string>
+    <string name="monster_damage">Урон монстра</string>
+</resources>
