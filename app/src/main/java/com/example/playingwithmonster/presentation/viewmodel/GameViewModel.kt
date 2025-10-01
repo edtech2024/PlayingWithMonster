@@ -74,32 +74,34 @@ class GameViewModel @Inject constructor(
 
 
     suspend fun startPlayer() {
+            //useCaseCreateCreature.invoke(uiToModelPlayer.map(player.value!!))
 
-        //useCaseCreateCreature.invoke(uiToModelPlayer.map(player.value!!))
+        if(player.value!!.currentHealth.toDouble() > 0.0) {
 
-        var modifier: Int = useCaseAttackModifier.invoke(
-            player.value?.attack.toString().toInt(),
-            monster.value?.defense.toString().toInt()
-        )
-        Log.d("modifier", modifier.toString())
+            var modifier: Int = useCaseAttackModifier.invoke(
+                player.value?.attack.toString().toInt(),
+                monster.value?.defense.toString().toInt()
+            )
+            Log.d("modifier", modifier.toString())
 
-        var dice: List<Int> = useCaseThrowDice.invoke(modifier)
-        Log.d("dice", dice.toString())
+            var dice: List<Int> = useCaseThrowDice.invoke(modifier)
+            Log.d("dice", dice.toString())
 
-        var success: Boolean = useCaseAttackSuccess.invoke(dice)
-        Log.d("success", success.toString())
+            var success: Boolean = useCaseAttackSuccess.invoke(dice)
+            Log.d("success", success.toString())
 
-        if (success) {
-            var health: Double = useCaseForceImpact.invoke(player.value!!.damage.toDouble(),
-                monster.value!!.currentHealth.toDouble())
-            Log.d("health", health.toString())
+            if (success) {
+                var health: Double = useCaseForceImpact.invoke(player.value!!.damage.toDouble(),
+                    monster.value!!.currentHealth.toDouble())
+                Log.d("health", health.toString())
 
-            //monster.value!!.currentHealth = health.toString()
-            var updatedMonster = monster.value
-            updatedMonster!!.currentHealth = health.toString()
-            monster.postValue(updatedMonster)
+                //monster.value!!.currentHealth = health.toString()
+                var updatedMonster = monster.value
+                updatedMonster!!.currentHealth = health.toString()
+                monster.postValue(updatedMonster)
 
-            setHealthMonster(health)
+                setHealthMonster(health)
+            }
         }
         //useCaseUpdateCreature.invoke(uiToModelPlayer.map(player.value!!))
 
@@ -108,32 +110,34 @@ class GameViewModel @Inject constructor(
     }
 
     suspend fun startMonster() {
-
         //useCaseCreateCreature.invoke(uiToModelPlayer.map(player.value!!))
 
-        var modifier: Int = useCaseAttackModifier.invoke(
-            monster.value?.attack.toString().toInt(),
-            player.value?.defense.toString().toInt()
-        )
-        Log.d("modifier", modifier.toString())
+        if(monster.value!!.currentHealth.toDouble() > 0.0) {
 
-        var dice: List<Int> = useCaseThrowDice.invoke(modifier)
-        Log.d("dice", dice.toString())
+            var modifier: Int = useCaseAttackModifier.invoke(
+                monster.value?.attack.toString().toInt(),
+                player.value?.defense.toString().toInt()
+            )
+            Log.d("modifier", modifier.toString())
 
-        var success: Boolean = useCaseAttackSuccess.invoke(dice)
-        Log.d("success", success.toString())
+            var dice: List<Int> = useCaseThrowDice.invoke(modifier)
+            Log.d("dice", dice.toString())
 
-        if (success) {
-            var health: Double = useCaseForceImpact.invoke(monster.value!!.damage.toDouble(),
-                player.value!!.currentHealth.toDouble())
-            Log.d("health", health.toString())
+            var success: Boolean = useCaseAttackSuccess.invoke(dice)
+            Log.d("success", success.toString())
 
-            //player.value!!.currentHealth = health.toString()
-            var updatedPlayer = player.value
-            updatedPlayer!!.currentHealth = health.toString()
-            player.postValue(updatedPlayer)
+            if (success) {
+                var health: Double = useCaseForceImpact.invoke(monster.value!!.damage.toDouble(),
+                    player.value!!.currentHealth.toDouble())
+                Log.d("health", health.toString())
 
-            setHealthPlayer(health)
+                //player.value!!.currentHealth = health.toString()
+                var updatedPlayer = player.value
+                updatedPlayer!!.currentHealth = health.toString()
+                player.postValue(updatedPlayer)
+
+                setHealthPlayer(health)
+            }
         }
         //useCaseUpdateCreature.invoke(uiToModelPlayer.map(player.value!!))
 
