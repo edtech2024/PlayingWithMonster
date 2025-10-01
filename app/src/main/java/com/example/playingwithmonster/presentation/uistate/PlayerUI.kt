@@ -15,6 +15,8 @@ data class PlayerUI public constructor(
     var numberOfTimes: String
 ) : Parcelable {
     companion object {
+        var health = Random.nextDouble(1.0,30.0).toString()
+        
         operator fun invoke(
             id:String,
             attack: String,
@@ -35,8 +37,8 @@ data class PlayerUI public constructor(
             id = null.toString(),
             attack = Random.nextInt(1,30).toString(),
             defense = Random.nextInt(1,30).toString(),
-            maxHealth = Random.nextDouble(1.0,30.0).toString(),
-            currentHealth = Random.nextDouble(1.0,30.0).toString(),
+            maxHealth = health,
+            currentHealth = health,
             damage = Random.nextDouble(1.0,6.0).toString(),
             numberOfTimes = 4.toString()
         )

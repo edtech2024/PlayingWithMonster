@@ -14,6 +14,8 @@ data class MonsterUI public constructor(
     var damage: String
 ) : Parcelable {
     companion object {
+        var health = Random.nextDouble(1.0,30.0).toString()
+
         operator fun invoke(
             id:String,
             attack: String,
@@ -32,8 +34,8 @@ data class MonsterUI public constructor(
             id = null.toString(),
             attack = Random.nextInt(1,30).toString(),
             defense = Random.nextInt(1,30).toString(),
-            maxHealth = Random.nextDouble(1.0,30.0).toString(),
-            currentHealth = Random.nextDouble(1.0,30.0).toString(),
+            maxHealth = health,
+            currentHealth = health,
             damage = Random.nextDouble(1.0,6.0).toString()
         )
     }
