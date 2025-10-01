@@ -7,6 +7,7 @@ import kotlin.random.Random
 
 class UseCaseCalculateForceImpactImpl @Inject constructor(val repository: ICreatureRepository) : IUseCaseCalculateForceImpact {
     override fun invoke(attackersDamage: Double, defendersHealth: Double): Double {
-        return defendersHealth.minus(Random.nextDouble(0.0, attackersDamage))
+        return if (defendersHealth > 0.0) defendersHealth.minus(Random.nextDouble(0.0, attackersDamage))
+        else defendersHealth
     }
 }
