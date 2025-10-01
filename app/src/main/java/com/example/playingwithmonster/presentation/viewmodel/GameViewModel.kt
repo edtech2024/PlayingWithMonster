@@ -109,8 +109,8 @@ class GameViewModel @Inject constructor(
         //useCaseCreateCreature.invoke(uiToModelPlayer.map(player.value!!))
 
         var modifier: Int = useCaseAttackModifier.invoke(
-            player.value?.attack.toString().toInt(),
-            monster.value?.defense.toString().toInt()
+            monster.value?.attack.toString().toInt(),
+            player.value?.defense.toString().toInt()
         )
         Log.d("modifier", modifier.toString())
 
