@@ -41,11 +41,18 @@ class UseCaseThrowDiceImpl @Inject constructor(val repository: ICreatureReposito
 
     override fun invoke(attackModifier: Int): List<Int> {
         var items: List<Int> = listOf()
-        while(attackModifier > 0) {
-            attackModifier.minus(1)
+        if (attackModifier > 0){
+            var i  = attackModifier
+            while(i > 0) {
+                val response = Random.nextInt(1, 6)
+                items += response
+                i -= 1
+            }
+            return items
+        } else {
             val response = Random.nextInt(1, 6)
             items += response
+            return items
         }
-        return items
     }
 }
