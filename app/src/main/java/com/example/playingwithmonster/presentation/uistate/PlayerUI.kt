@@ -16,7 +16,7 @@ data class PlayerUI public constructor(
 ) : Parcelable {
     companion object {
         var health = Random.nextDouble(1.0,30.0).toString()
-        
+
         operator fun invoke(
             id:String,
             attack: String,
