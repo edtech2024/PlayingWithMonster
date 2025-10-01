@@ -67,6 +67,9 @@ class GameViewModel @Inject constructor(
         // put value in livedata
         player.value = currentPlayerUI
         monster.value = currentMonsterUI
+
+        setHealthPlayer(player.value!!.currentHealth.toDouble())
+        setHealthMonster(monster.value!!.currentHealth.toDouble())
     }
 
 
